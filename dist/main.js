@@ -8,7 +8,7 @@ const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
 app.listen(port, () => {
-    console.log("🚀 服务已启动！");
+    console.log("🚀 服务已启动!!!");
 });
 app.get("/", (request, response) => {
     response.send("你好！");
@@ -35,7 +35,7 @@ app.get("/posts", (request, response) => {
 });
 app.get("/posts/:postId", (request, response) => {
     const { postId } = request.params;
-    const posts = data.filter((item) => item.id == postId);
+    const posts = data.filter((item) => item.id == parseInt(postId, 10));
     response.send(posts[0]);
 });
 app.post("/posts", (request, response) => {

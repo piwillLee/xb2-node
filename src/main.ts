@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express.json());
 
 app.listen(port, () => {
-  console.log("🚀 服务已启动！");
+  console.log("🚀 服务已启动!!!");
 });
 
 app.get("/", (request:Request, response:Response) => {
@@ -45,7 +45,7 @@ app.get("/posts/:postId", (request:Request, response:Response) => {
   const { postId } = request.params;
 
   //查找具体内容
-  const posts = data.filter((item) => item.id == postId);
+  const posts = data.filter((item) => item.id == parseInt(postId,10));
 
   //做出响应
   response.send(posts[0]);
