@@ -4,7 +4,17 @@ exports.getPosts = void 0;
 const mysql_1 = require("../app/database/mysql");
 const getPosts = async () => {
     const statement = `
-    SELECT * FROM post
+    SELECT 
+      post.id,
+      post.title,
+      post.content,
+      JSON_OBJECT(
+        'id',user.id,
+        'name',user.name
+      ) as user
+    FROM post
+    LEFT JOIN user
+        ON user.id = post.userId
   `;
     const [data] = await mysql_1.connection.promise().query(statement);
     return data;
