@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.update = exports.store = exports.index = void 0;
+const lodash_1 = __importDefault(require("lodash"));
 const post_service_1 = require("./post.service");
 const index = async (request, response, next) => {
     try {
@@ -25,9 +29,9 @@ const store = async (request, response, next) => {
 exports.store = store;
 const update = async (request, response, next) => {
     const { postId } = request.params;
-    const { title, content } = request.body;
+    const post = lodash_1.default.pick(request.body, ["title", "content"]);
     try {
-        const data = await (0, post_service_1.updatePost)(parseInt(postId, 10), { title, content });
+        const data = await (0, post_service_1.updatePost)(parseInt(postId, 10), post);
         response.send(data);
     }
     catch (error) {
