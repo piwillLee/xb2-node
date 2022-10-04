@@ -33,5 +33,6 @@ const router = express_1.default.Router();
 router.get("/posts", app_middleware_1.requestUrl, postController.index);
 router.post("/posts", postController.store);
 router.patch("/posts/:postId", postController.update);
+router.delete("/posts/:postId", postController.destory);
 exports.default = router;
 //# sourceMappingURL=post.router.js.map

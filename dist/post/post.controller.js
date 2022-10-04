@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.update = exports.store = exports.index = void 0;
+exports.destory = exports.update = exports.store = exports.index = void 0;
 const lodash_1 = __importDefault(require("lodash"));
 const post_service_1 = require("./post.service");
 const index = async (request, response, next) => {
@@ -39,4 +39,15 @@ const update = async (request, response, next) => {
     }
 };
 exports.update = update;
+const destory = async (request, response, next) => {
+    const { postId } = request.params;
+    try {
+        const data = await (0, post_service_1.deletePost)(parseInt(postId, 10));
+        response.send(data);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.destory = destory;
 //# sourceMappingURL=post.controller.js.map
