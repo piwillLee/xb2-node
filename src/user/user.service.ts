@@ -25,7 +25,7 @@ export const getUserByName = async (name: string) => {
   // 准备查询
   const statement = `
   SELECT id, name
-  FROM users
+  FROM user
   WHERE name =?
   `;
 
