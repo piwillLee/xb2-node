@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import * as userService from "../user/user.service";
 import bcrypt from "bcrypt";
+import * as userService from "../user/user.service";
+
 import { PUBLIC_KEY } from "../app/app.config";
 
 /**
@@ -52,7 +53,7 @@ export const authGuard = (
     if (!authorization) throw new Error();
 
     // 提取 JWT 令牌
-    const token = authorization.replace("Bearer", "");
+    const token = authorization.replace("Bearer ", "");
     if (!token) throw new Error();
 
     // 验证令牌
