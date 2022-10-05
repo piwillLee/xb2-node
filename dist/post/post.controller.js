@@ -18,8 +18,9 @@ const index = async (request, response, next) => {
 exports.index = index;
 const store = async (request, response, next) => {
     const { title, content } = request.body;
+    const { id: userId } = request.user;
     try {
-        const data = await (0, post_service_1.createPost)({ title, content });
+        const data = await (0, post_service_1.createPost)({ title, content, userId });
         response.status(201).send(data);
     }
     catch (error) {
