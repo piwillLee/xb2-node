@@ -16,7 +16,7 @@ export const validateUserData = async (
 
   //验证用户数据
   if (!name) return next(new Error("NAME_IS_REQUIRED"));
-  if (!password) return next(new Error("NAME_IS_REQUIRED"));
+  if (!password) return next(new Error("PASSWORD_IS_REQUIRED"));
 
   //下一步
   next();
