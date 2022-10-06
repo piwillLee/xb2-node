@@ -109,5 +109,8 @@ export const accessControl = (options: AccessControlOptions) => {
         return next(error);
       }
     }
+
+    // 下一步
+    next();
   };
 };

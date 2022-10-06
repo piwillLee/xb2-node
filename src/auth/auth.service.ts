@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import { connection } from "src/app/database/mysql";
 import { PRIVATE_KEY } from "../app/app.config";
+import { connection } from "../app/database/mysql";
 
 /**
  * 签发令牌
@@ -23,13 +23,13 @@ export const signToken = (options: SignTokenOptions) => {
 /**
  * 检查用户是否拥有指定资源
  */
-interface ProcessOptions {
+interface PossessOptions {
   resourceId: number;
   resourceType: string;
   userId: number;
 }
 
-export const possess = async (options: ProcessOptions) => {
+export const possess = async (options: PossessOptions) => {
   // 准备资源
   const { resourceId, resourceType, userId } = options;
 
@@ -37,7 +37,7 @@ export const possess = async (options: ProcessOptions) => {
   const statement = `
     SELECT COUNT(${resourceType}.id) as count
     FROM ${resourceType}
-    WHERE &{resourceType}.id = ? AND userId = ?
+    WHERE ${resourceType}.id = ? AND userId = ?
   `;
 
   // 检查拥有权
