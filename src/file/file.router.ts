@@ -9,6 +9,12 @@ const router = express.Router();
  * 上传文件
  */
 router.post("/files", authGuard, fileInterceptor, fileController.store);
+
+/**
+ * 文件服务
+ */
+router.get("/files/:filedId/serve", fileController.serve);
+
 /**
  * 导出路由
  */
