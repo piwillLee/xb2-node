@@ -29,7 +29,7 @@ interface ProcessOptions {
   userId: number;
 }
 
-export const process = async (options: ProcessOptions) => {
+export const possess = async (options: ProcessOptions) => {
   // 准备资源
   const { resourceId, resourceType, userId } = options;
 
