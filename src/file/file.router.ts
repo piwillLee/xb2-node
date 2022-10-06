@@ -13,7 +13,7 @@ router.post("/files", authGuard, fileInterceptor, fileController.store);
 /**
  * 文件服务
  */
-router.get("/files/:filedId/serve", fileController.serve);
+router.get("/files/:fileId/serve", fileController.serve);
 
 /**
  * 导出路由
