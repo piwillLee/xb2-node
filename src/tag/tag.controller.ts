@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { creatTag, getTagByName } from "./tag.service";
+import { createTag, getTagByName } from "./tag.service";
 
 /**
  * 创建标签
@@ -20,7 +20,7 @@ export const store = async (
     if (tag) throw new Error("TAG_ALREADY_EXISTS");
 
     // 存储标签
-    const data = await creatTag({ name });
+    const data = await createTag({ name });
 
     // 做出响应
     response.status(201).send(data);

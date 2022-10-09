@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postHasTag = exports.createPostTag = exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
+exports.deletePostTag = exports.postHasTag = exports.createPostTag = exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
 const mysql_1 = require("../app/database/mysql");
 const getPosts = async () => {
     const statement = `
@@ -66,4 +66,13 @@ const postHasTag = async (postId, tagId) => {
     return data[0] ? true : false;
 };
 exports.postHasTag = postHasTag;
+const deletePostTag = async (postId, tagId) => {
+    const statement = `
+    DELETE FROM post_tag
+    WHERE postId =? AND tagId =? 
+  `;
+    const [data] = await mysql_1.connection.promise().query(statement, [postId, tagId]);
+    return data;
+};
+exports.deletePostTag = deletePostTag;
 //# sourceMappingURL=post.service.js.map
