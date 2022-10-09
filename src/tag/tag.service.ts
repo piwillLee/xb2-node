@@ -4,7 +4,7 @@ import { TagModel } from "./tag.model";
 /**
  * 创建标签
  */
-export const creatTag = async (tag: TagModel) => {
+export const createTag = async (tag: TagModel) => {
   // 准备查询
   const statement = `
     INSERT INTO tag

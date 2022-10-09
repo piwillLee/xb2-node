@@ -35,5 +35,6 @@ router.get("/posts", app_middleware_1.requestUrl, postController.index);
 router.post("/posts", auth_middleware_1.authGuard, postController.store);
 router.patch("/posts/:postId", auth_middleware_1.authGuard, (0, auth_middleware_1.accessControl)({ possession: true }), postController.update);
 router.delete("/posts/:postId", auth_middleware_1.authGuard, (0, auth_middleware_1.accessControl)({ possession: true }), postController.destory);
+router.post("/posts/:postId/tag", auth_middleware_1.authGuard, (0, auth_middleware_1.accessControl)({ possession: true }), postController.storePostTag);
 exports.default = router;
 //# sourceMappingURL=post.router.js.map
