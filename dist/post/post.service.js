@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
+exports.createPostTag = exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
 const mysql_1 = require("../app/database/mysql");
 const getPosts = async () => {
     const statement = `
@@ -48,4 +48,13 @@ const deletePost = async (postId) => {
     return data;
 };
 exports.deletePost = deletePost;
+const createPostTag = async (postId, tagId) => {
+    const statement = `
+    INSERT INTO post_tag(postId,tagId)
+    VALUES(?,?)
+  `;
+    const [data] = await mysql_1.connection.promise().query(statement, [postId, tagId]);
+    return data;
+};
+exports.createPostTag = createPostTag;
 //# sourceMappingURL=post.service.js.map
