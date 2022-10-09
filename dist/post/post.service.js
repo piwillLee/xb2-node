@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPostTag = exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
+exports.postHasTag = exports.createPostTag = exports.deletePost = exports.updatePost = exports.createPost = exports.getPosts = void 0;
 const mysql_1 = require("../app/database/mysql");
 const getPosts = async () => {
     const statement = `
@@ -57,4 +57,13 @@ const createPostTag = async (postId, tagId) => {
     return data;
 };
 exports.createPostTag = createPostTag;
+const postHasTag = async (postId, tagId) => {
+    const statement = `
+  SELECT * FROM post_tag
+  WHERE postId=? AND tagId=?
+  `;
+    const [data] = await mysql_1.connection.promise().query(statement, [postId, tagId]);
+    return data[0] ? true : false;
+};
+exports.postHasTag = postHasTag;
 //# sourceMappingURL=post.service.js.map
