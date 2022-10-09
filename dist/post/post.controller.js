@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.storePostTag = exports.destory = exports.update = exports.store = exports.index = void 0;
+exports.destroyPostTag = exports.storePostTag = exports.destory = exports.update = exports.store = exports.index = void 0;
 const lodash_1 = __importDefault(require("lodash"));
 const post_service_1 = require("./post.service");
 const tag_service_1 = require("../tag/tag.service");
@@ -90,4 +90,16 @@ const storePostTag = async (request, response, next) => {
     }
 };
 exports.storePostTag = storePostTag;
+const destroyPostTag = async (request, response, next) => {
+    const { postId } = request.params;
+    const { tagId } = request.body;
+    try {
+        await (0, post_service_1.deletePostTag)(parseInt(postId, 10), tagId);
+        response.sendStatus(200);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.destroyPostTag = destroyPostTag;
 //# sourceMappingURL=post.controller.js.map

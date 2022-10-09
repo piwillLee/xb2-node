@@ -4,3 +4,4 @@ export declare const store: (request: Request, response: Response, next: NextFun
 export declare const update: (request: Request, response: Response, next: NextFunction) => Promise<void>;
 export declare const destory: (request: Request, response: Response, next: NextFunction) => Promise<void>;
 export declare const storePostTag: (request: Request, response: Response, next: NextFunction) => Promise<void>;
+export declare const destroyPostTag: (request: Request, response: Response, next: NextFunction) => Promise<void>;
